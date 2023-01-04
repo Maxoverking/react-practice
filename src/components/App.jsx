@@ -1,16 +1,11 @@
+import css from './App.module.css'
+import { Cards } from './Cards/Cards'
+import data from './data/data'
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      Привет 
+    <div className={css.app}>
+      <Cards datas={data} />
     </div>
   );
 };
