@@ -1,4 +1,4 @@
-
+// import classNames from "classnames";
 import { Component } from "react";
 import css from './Colorpicker.module.css'
 
@@ -11,7 +11,12 @@ export class Colorpicker extends Component {
     }
     //обьединяем два класса в методе
     optionClass = (index) => {
-    const currentClasses = [css.btn];
+        const currentClasses = [css.btn];
+        // const clsx = classNames(css.btn, {
+        //    'btn__active': index === this.state.activeColorIdx,
+        // })
+        // console.log("🚀  clsx", clsx);
+        // return clsx;
             if (index === this.state.activeColorIdx) {
                 currentClasses.push(css.btn__active);
             }

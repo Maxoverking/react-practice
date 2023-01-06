@@ -6,6 +6,7 @@ import { Dropdown } from './Dropdown';
 import { Colorpicker } from './Colorpicker';
 import { ToDoList } from './ToDoList';
 import { Form } from './Form';
+import { Formics } from './Formics';
 import colors from './Colorpicker/color'
 
 export class App extends Component {
@@ -31,8 +32,24 @@ export class App extends Component {
   //   this.setState({inputValue:value})
   // }
 
-  formSubmitData = data => {
-    console.log("🚀  data", data);
+  formSubmitData = dataId => {
+    console.log("🚀  dataId", dataId);
+    // this.setState(prevState => ({
+    //   todos: prevState.todos.map(todo => {
+    //     if (todo.id === dataId) {
+    //       return {
+    //         ...todo,
+    //         complited: !todo.complited,
+    //       }
+    //     }
+    //     return todo;
+    //   })
+    // }))
+    this.setState(({ todos }) => ({
+      todos: todos.map(todo => todo.id === dataId ?
+        {...todo,complited: !todo.complited} : todo)
+    }))
+
 }
   render() {
     const { todos} = this.state;
@@ -43,13 +60,18 @@ export class App extends Component {
           
           <Colorpicker colors={colors} />
           
-          <ToDoList todos={todos} onDelete={this.deleteTodo} />
+          <ToDoList 
+          todos={todos} 
+            onDelete={this.deleteTodo}
+          onChecked={this.formSubmitData }/>
           {/* <input type="text"
             value={inputValue}
             onChange={this.handleInputChange}
           /> */}
-          <Form getForm={this.formSubmitData } />
-         
+          <Form
+            getForm={this.formSubmitData}
+            />
+          <Formics/>
     </div>
   );
   }
