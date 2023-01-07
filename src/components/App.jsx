@@ -5,9 +5,13 @@ import { Component } from 'react';
 import { Dropdown } from './Dropdown';
 import { Colorpicker } from './Colorpicker';
 import { ToDoList } from './ToDoList';
-import { Form } from './Form';
-import { Formics } from './Formics';
+import  {Modal}  from './Modal';
+// import { Form } from './Form';
+// import { Formics } from './Formics';
 import colors from './Colorpicker/color'
+// Как импортировать SVG
+import { ReactComponent as HomeSvg } from './icons/home.svg';
+
 
 export class App extends Component {
   state = {
@@ -17,8 +21,8 @@ export class App extends Component {
       { id: 'id-3', text: 'Todowe-3', complited: true },
       { id: 'id-4', text: 'Todonvds-4', complited: false },
     ],
-    // inputValue: '',
-
+    inputValue: '',
+    showModal:false,
   }
 
   deleteTodo = todoId => {
@@ -50,9 +54,14 @@ export class App extends Component {
         {...todo,complited: !todo.complited} : todo)
     }))
 
-}
+  }
+  toggleModal = () => {
+    this.setState(({showModal}) => ({
+      showModal:!showModal,
+    }))
+  }
   render() {
-    const { todos} = this.state;
+    const { todos,showModal} = this.state;
       return (
     <div className={css.app} >
       {/* <Cards datas={data} /> */}
@@ -68,10 +77,33 @@ export class App extends Component {
             value={inputValue}
             onChange={this.handleInputChange}
           /> */}
-          <Form
+          {/* <Form
             getForm={this.formSubmitData}
-            />
-          <Formics/>
+            /> */}
+          {/* <Formics/> */}
+
+          {/* Применение иконки !!!!!!!!!!!*/}
+          <button type='button' 
+            onClick={this.toggleModal}>
+            <HomeSvg width='40' height='40' fill='red'/>
+          </button>
+          
+
+
+          {showModal &&
+            <Modal
+              onCloseModal={this.toggleModal}>
+            <p>Lorem ipsum dolor sit,
+                    amet consectetur adipisicing elit.
+                    Voluptatibus rerum atque, totam eaque cum
+                perspiciatis velit ex id architecto
+                ut necessitatibus.
+                    A omnis esse error sed,
+                    perferendis ratione culpa doloremque.</p>
+            
+              <button type='button'
+                onClick={this.toggleModal}>X</button>
+          </Modal>}
     </div>
   );
   }

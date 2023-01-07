@@ -1,6 +1,8 @@
 import { Component } from "react";
 import css from './Dropdown.module.css'
-
+// import { ReactComponent as SearchSvg } from '../icons/search.svg';
+//просто подставить эту иконку
+// <SearchSvg/>
 
 export class Dropdown extends Component {
     state = {

@@ -1,4 +1,5 @@
 import css from './ToDoList.module.css'
+import { ReactComponent as BinSvg } from '../icons/bin.svg';
 
 export const ToDoList = ({todos,onDelete,onChecked}) => {
     const todosComplited = todos.filter(todo => todo.complited);
@@ -20,9 +21,14 @@ export const ToDoList = ({todos,onDelete,onChecked}) => {
                     <p>{text}</p>
                     <button
                         type="button"
-                        
+                        className={css.btn}
                         onClick={()=>onDelete(id)}
-                    >Delete</button>
+                    >
+                        <BinSvg 
+                        //    className={css.icon} 
+                        width='20' 
+                        height='20'/>
+                    </button>
                 </li>
             )}
         </ul >
