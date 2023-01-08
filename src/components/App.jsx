@@ -1,14 +1,16 @@
 import css from './App.module.css'
 import { Component } from 'react';
 // import { Cards } from './Cards/Cards'
-// import data from './data/data'
+// import data from './data/data.json'
+import publication from './data/publication.json'
 import { Dropdown } from './Dropdown';
 import { Colorpicker } from './Colorpicker';
 import { ToDoList } from './ToDoList';
 import  {Modal}  from './Modal';
+import  {Reader}  from './Reader';
 // import { Form } from './Form';
 // import { Formics } from './Formics';
-import colors from './Colorpicker/color'
+import colors from './Colorpicker/color.json'
 // Как импортировать SVG
 import { ReactComponent as HomeSvg } from './icons/home.svg';
 
@@ -81,7 +83,7 @@ export class App extends Component {
             getForm={this.formSubmitData}
             /> */}
           {/* <Formics/> */}
-
+              <br />
           {/* Применение иконки !!!!!!!!!!!*/}
           <button type='button' 
             onClick={this.toggleModal}>
@@ -103,7 +105,11 @@ export class App extends Component {
             
               <button type='button'
                 onClick={this.toggleModal}>X</button>
-          </Modal>}
+            </Modal>}
+          <br />
+          <Reader item={publication} />
+          
+
     </div>
   );
   }
